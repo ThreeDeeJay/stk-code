@@ -45,7 +45,7 @@ namespace irr
 			WithAlphaChannel(false),
 			Doublebuffer(true),
 			IgnoreInput(false),
-			Stereobuffer(false),
+			Stereobuffer(true),
 			HighPrecisionFPU(false),
 			EventReceiver(NULL),
             FileSystem(NULL),
@@ -339,4 +339,5 @@ namespace irr
 } // end namespace irr
 
 #endif
+
 
