@@ -201,8 +201,10 @@ SDLController::SDLController(int device_id)
 
 finish:
     m_haptic = SDL_HapticOpenFromJoystick(m_joystick);
+    printf("Before m_haptic test\n");
     if (m_haptic)
     {
+        printf("m_haptic_test successful\n");
         SDL_HapticRumbleInit(m_haptic);
         updateAutoCenter(getGamePadDevice()->getAutoCenterStrength());
     }
@@ -277,6 +279,7 @@ void SDLController::doRumble(float strength_low, float strength_high, uint32_t d
 
 void SDLController::updateAutoCenter(int state)
 {
+    printf("Auto-center with value %i\n", state);
     m_auto_center = state;
     SDL_HapticSetAutocenter(m_haptic, m_auto_center);
 }
