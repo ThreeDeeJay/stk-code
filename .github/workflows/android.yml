@@ -39,7 +39,10 @@ jobs:
       run: |
         curl https://github.com/ThreeDeeJay/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
         
-    - name: Download dependencies
+    - name: List files
+      run: ls -R
+
+    - name: Extract dependencies
       run: |
         tar -xf libs-src.tar.xz
 
