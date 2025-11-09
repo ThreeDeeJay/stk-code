@@ -39,6 +39,10 @@ jobs:
       working-directory: .${{env.WorkingDirectory}}
       run: |
         curl https://github.com/supertuxkart/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
+        
+    - name: Download dependencies
+      working-directory: .${{env.WorkingDirectory}}
+      run: |
         tar -xf libs-src.tar.xz
 
     - name: Generate assets
