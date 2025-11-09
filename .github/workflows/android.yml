@@ -4,7 +4,12 @@ env:
   Branch: ${{github.ref_name}}
   GH_TOKEN: ${{ github.token }}
   Artifacts: app/build/outputs/apk/debug/app-debug.apk
-  WorkingDirectory: /android
+  SDK_PATH: android
+  WorkingDirectory: $ANDROID_SDK_HOME
+  NDK_PATH: $ANDROID_NDK_HOME
+  STK_MIN_ANDROID_SDK: 16
+  STK_TARGET_ANDROID_SDK: 30
+  STK_NDK_VERSION: 28.1.13356709
 
 on:
   push:
@@ -35,21 +40,9 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Setup Android NDK
-      uses: nttld/setup-ndk@v1.5.0
-      with:
-        ndk-version: 23.1.7779620
-        add-to-path: true
-        link-to-sdk: true
-
     - name: Set environment variables
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        export SDK_PATH=$ANDROID_SDK_HOME
-        export NDK_PATH=$ANDROID_NDK_HOME
-        export STK_MIN_ANDROID_SDK=16
-        export STK_TARGET_ANDROID_SDK=30
-        export STK_NDK_VERSION=23.1.7779620
           
     - name: Download dependencies
       run: |
