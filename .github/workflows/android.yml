@@ -44,13 +44,6 @@ jobs:
       run: |
         curl https://github.com/supertuxkart/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
         tar -xf libs-src.tar.xz
-        export SDK_PATH=$ANDROID_SDK_HOME
-        export NDK_PATH=$ANDROID_NDK_HOME
-        # Optional for STK_MIN_ANDROID_SDK, STK_TARGET_ANDROID_SDK and STK_NDK_VERSION
-        # If unset it will use the below values
-        export STK_MIN_ANDROID_SDK=16
-        export STK_TARGET_ANDROID_SDK=30
-        export STK_NDK_VERSION=23.1.7779620
         ./generate_assets.sh
         ./make_deps.sh
         ./make.sh
