@@ -43,7 +43,7 @@ jobs:
       run: |
         tar -xf lib.tar.xz
 
-    - name: Generate assets
+    - name: Download assets
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
         sudo apt install -y subversion
