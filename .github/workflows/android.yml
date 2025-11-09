@@ -41,7 +41,7 @@ jobs:
 
     - name: Extract dependencies
       run: |
-        tar -xf lib.tar.xz
+        tar -xf lib.tar.xz/dependencies-android-src.tar
 
     - name: Generate assets
       working-directory: .${{env.WorkingDirectory}}
