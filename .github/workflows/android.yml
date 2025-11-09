@@ -35,13 +35,25 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Grant execute permission for gradlew
+    - name: Generate assets
       working-directory: .${{env.WorkingDirectory}}
-      run: chmod +x gradlew
+      run: generate_assets.sh
 
-    - name: Build with Gradle
+    - name: Build
       working-directory: .${{env.WorkingDirectory}}
-      run: ./gradlew build --warning-mode all
+      run: |
+        curl https://github.com/supertuxkart/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
+        tar -xf libs-src.tar.xz
+        export SDK_PATH=$ANDROID_SDK_HOME
+        export NDK_PATH=$ANDROID_NDK_HOME
+        # Optional for STK_MIN_ANDROID_SDK, STK_TARGET_ANDROID_SDK and STK_NDK_VERSION
+        # If unset it will use the below values
+        export STK_MIN_ANDROID_SDK=16
+        export STK_TARGET_ANDROID_SDK=30
+        export STK_NDK_VERSION=23.1.7779620
+        ./generate_assets.sh
+        ./make_deps.sh
+        ./make.sh
 
     - name: List files
       working-directory: .${{env.WorkingDirectory}}
