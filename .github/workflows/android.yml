@@ -38,10 +38,7 @@ jobs:
     - name: Download dependencies
       run: |
         curl https://github.com/ThreeDeeJay/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "lib.tar.xz"
-
-    - name: Extract dependencies
-      run: |
-        tar -xJf lib.tar.xz
+        tar -xf lib.tar.xz
 
     - name: Generate assets
       working-directory: .${{env.WorkingDirectory}}
