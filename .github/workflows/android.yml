@@ -36,12 +36,10 @@ jobs:
         cache: gradle
 
     - name: Download dependencies
-      working-directory: ${{env.WorkingDirectory}}
       run: |
-        curl https://github.com/supertuxkart/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
+        curl https://github.com/ThreeDeeJay/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
         
     - name: Download dependencies
-      working-directory: .${{env.WorkingDirectory}}
       run: |
         tar -xf libs-src.tar.xz
 
@@ -50,10 +48,14 @@ jobs:
       run: |
         ./generate_assets.sh
 
-    - name: Build
+    - name: Build dependencies
       working-directory: .${{env.WorkingDirectory}}
       run: |
         ./make_deps.sh
+
+    - name: Build app
+      working-directory: .${{env.WorkingDirectory}}
+      run: |
         ./make.sh
 
     - name: List files
