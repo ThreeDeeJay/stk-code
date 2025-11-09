@@ -54,6 +54,13 @@ jobs:
       run: |
         ./generate_assets.sh
 
+
+    - name: Generate assets
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
+      run: |
+        export SDK_PATH=$ANDROID_SDK_HOME
+        export NDK_PATH=$ANDROID_NDK_HOME
+
     - name: Build dependencies
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
