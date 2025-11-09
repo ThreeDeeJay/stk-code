@@ -35,16 +35,20 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Generate assets
-      working-directory: .${{env.WorkingDirectory}}
-      run: generate_assets.sh
-
-    - name: Build
+    - name: Download dependencies
       working-directory: .${{env.WorkingDirectory}}
       run: |
         curl https://github.com/supertuxkart/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
         tar -xf libs-src.tar.xz
+
+    - name: Generate assets
+      working-directory: .${{env.WorkingDirectory}}
+      run: |
         ./generate_assets.sh
+
+    - name: Build
+      working-directory: .${{env.WorkingDirectory}}
+      run: |
         ./make_deps.sh
         ./make.sh
 
