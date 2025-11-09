@@ -39,10 +39,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-
-    - name: Set environment variables
-      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
-      run: |
           
     - name: Download dependencies
       run: |
