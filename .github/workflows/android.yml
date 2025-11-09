@@ -47,7 +47,7 @@ jobs:
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
         sudo apt install -y subversion
-        svn checkout https://svn.code.sf.net/p/supertuxkart/code/stk-assets ../stk-assets
+        svn checkout https://svn.code.sf.net/p/supertuxkart/code/stk-assets ../../stk-assets
 
     - name: Generate assets
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
