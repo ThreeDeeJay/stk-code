@@ -36,7 +36,7 @@ jobs:
         cache: gradle
 
     - name: Download dependencies
-      working-directory: .${{env.WorkingDirectory}}
+      working-directory: ${{env.WorkingDirectory}}
       run: |
         curl https://github.com/supertuxkart/dependencies/releases/download/preview/dependencies-android-src.tar.xz -o "libs.tar.xz"
         
