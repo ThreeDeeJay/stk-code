@@ -41,7 +41,7 @@ jobs:
 
     - name: Extract dependencies
       run: |
-        tar -xVf lib.tar.xz
+        tar -xf lib.tar.xz
 
     - name: Generate assets
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
