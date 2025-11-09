@@ -41,19 +41,22 @@ jobs:
 
     - name: Extract dependencies
       run: |
-        tar -xf lib.tar.xz
+        tar -xVf lib.tar.xz
 
     - name: Generate assets
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        .${{env.WorkingDirectory}}/generate_assets.sh
+        ./generate_assets.sh
 
     - name: Build dependencies
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        .${{env.WorkingDirectory}}/make_deps.sh
+        ./make_deps.sh
 
     - name: Build app
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        .${{env.WorkingDirectory}}/make.sh
+        ./make.sh
 
     - name: List files
       run: |
