@@ -60,6 +60,9 @@ jobs:
       run: |
         export SDK_PATH=$ANDROID_SDK_HOME
         export NDK_PATH=$ANDROID_NDK_HOME
+        export STK_MIN_ANDROID_SDK=16
+        export STK_TARGET_ANDROID_SDK=30
+        export STK_NDK_VERSION=27.3.13750724
 
     - name: Build dependencies
       working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
