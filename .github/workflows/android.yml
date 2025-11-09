@@ -4,7 +4,7 @@ env:
   Branch: ${{github.ref_name}}
   GH_TOKEN: ${{ github.token }}
   Artifacts: app/build/outputs/apk/debug/app-debug.apk
-  WorkingDirectory: /Android
+  WorkingDirectory: /android
 
 on:
   push:
@@ -44,23 +44,20 @@ jobs:
         tar -xf lib.tar.xz
 
     - name: Generate assets
-      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        ./generate_assets.sh
+        .${{env.WorkingDirectory}}/generate_assets.sh
 
     - name: Build dependencies
-      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        ./make_deps.sh
+        .${{env.WorkingDirectory}}/make_deps.sh
 
     - name: Build app
-      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
-        ./make.sh
+        .${{env.WorkingDirectory}}/make.sh
 
     - name: List files
-      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
-      run: ls -R
+      run: |
+        ls -R
 
     - name: Upload Artifact to GitHub
       uses: actions/upload-artifact@v4
