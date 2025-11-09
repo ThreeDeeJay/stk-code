@@ -44,7 +44,7 @@ jobs:
         tar -xf lib.tar.xz
 
     - name: Generate assets
-      working-directory: .${{env.WorkingDirectory}}
+      working-directory: ${{env.WorkingDirectory}}
       run: |
         ./generate_assets.sh
 
