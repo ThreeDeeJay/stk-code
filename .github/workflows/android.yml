@@ -44,22 +44,22 @@ jobs:
         tar -xf lib.tar.xz
 
     - name: Generate assets
-      working-directory: ${{env.WorkingDirectory}}
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
         ./generate_assets.sh
 
     - name: Build dependencies
-      working-directory: .${{env.WorkingDirectory}}
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
         ./make_deps.sh
 
     - name: Build app
-      working-directory: .${{env.WorkingDirectory}}
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: |
         ./make.sh
 
     - name: List files
-      working-directory: .${{env.WorkingDirectory}}
+      working-directory: ${{github.workspace}}${{env.WorkingDirectory}}
       run: ls -R
 
     - name: Upload Artifact to GitHub
